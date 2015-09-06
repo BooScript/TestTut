@@ -20,13 +20,13 @@ casper.start('https://www.lendwithcare.org/search/funded/completed/', function()
 });
 
 casper.then(function(){
-  //  for(var i=0; i<10; i++) {
-    //    if (this.exists('#card_container > div.paginate-more > button')) {
-      //      this.echo('found #button', 'INFO');
-    //        this.click('#card_container > div.paginate-more > button');
-    //    } else {
-     //       this.echo('button not found', 'ERROR');
-      //  }
+    for(var i=0; i<15; i++) {
+        if (this.exists('#card_container > div.paginate-more > button')) {
+            this.echo('found #button', 'INFO');
+            this.click('#card_container > div.paginate-more > button');
+        } else {
+            this.echo('button not found', 'ERROR');
+        }
 //timeout
         this.wait(5000, function () {
             this.echo("I have waited for 5 seconds");
@@ -37,7 +37,7 @@ casper.then(function(){
                 this.echo('button not found', 'ERROR');
             }
         });
-   // }
+    }
     //and again
 
    //casper.click(document.querySelector('#card_container > div.paginate-more > button'));
