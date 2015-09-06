@@ -19,16 +19,26 @@ casper.start('https://www.lendwithcare.org/search/funded/completed/', function()
 });
 
 casper.then(function(){
-    for(var i=0; i<15; i++) {
-            for(var i=0; i<7; i++) {
-   
-        casper.waitForSelector('#card_container > div.paginate-more > button',
+    //store css selector for  button that loads more content
+    var buttonCss = '#card_container > div.paginate-more > button';
+
+    for(var i=0; i<4; i++) {
+
+        // when button appears echo
+        casper.waitForSelector(buttonCss,
+
             function() {
                 this.echo('the button has appeared [waitforselector]');
                 this.click('#card_container > div.paginate-more > button');
-            });
+            },
 
+            function onTimeout(){this.echo('timed out before button element loaded in DOM')}, 15000
+        );
+
+
+    }
 });
+
 
 
 casper.then(function() {
