@@ -1,6 +1,12 @@
-// import modules
+// import modules.
+//var Q = require('q');
+
+var fs = require('fs');
+var Promise = require("bluebird");
 require('./ProjectClass.js');
-var p = require('./profileScrape.js');
+var scrape = require('./profileScrape.js');
+
+
 // import function to scrape profile
 var GetProfileLinks = require('./GetProfileLinks_FromDump.js');
 
@@ -16,16 +22,18 @@ var linksArr = GetProfileLinks.getProfileLinks;
 //array to hold project data
 var profileDataRaw = [];
 
+
 //scrape profiles
-for (var i = 0; i < 50; i++){
-   var urlCur = baseURL + linksArr[i];
-    console.log(urlCur);
-    profileDataRaw.push(p.profileScrape(urlCur) + ' i is ' + i);
-    console.log(profileDataRaw[i])
+for (var i = 0; i < 20; i++ ) {
+    //concatenate base url with profile link url
+    var urlCur = baseURL + linksArr[i];
+
+    profileDataRaw.push(scrape.profileScrape(urlCur));
 }
 
+
 // array to hold individual profile data
-varprofilesArr = [];
+//var profilesArr = [];
 
 //loop through
 
